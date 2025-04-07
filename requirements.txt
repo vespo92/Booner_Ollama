@@ -1,0 +1,12 @@
+langchain
+langchain-ollama
+langchain-community
+langchain-core
+langchain-chroma
+pandas
+python-dotenv
+requests
+pydantic
+fastapi
+uvicorn
+httpx
