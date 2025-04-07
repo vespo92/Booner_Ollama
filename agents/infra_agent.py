@@ -38,8 +38,8 @@ class InfrastructureAgent:
         """
         
         class FirewallRuleTool(BaseTool):
-            name = "firewall_rule_tool"
-            description = "Tool for managing firewall rules in OPNSense"
+            name: str = "firewall_rule_tool"
+            description: str = "Tool for managing firewall rules in OPNSense"
             args_schema: Type[BaseModel] = OPNSenseAction
             
             def _run(self, action_type: str, resource_type: str, parameters: dict):
@@ -48,8 +48,8 @@ class InfrastructureAgent:
                 return f"Performed {action_type} on {resource_type} with parameters: {parameters}"
         
         class ServerDeploymentTool(BaseTool):
-            name = "server_deployment_tool"
-            description = "Tool for deploying servers (web, database, game, etc.)"
+            name: str = "server_deployment_tool"
+            description: str = "Tool for deploying servers (web, database, game, etc.)"
             
             def _run(self, server_type: str, settings: dict):
                 # Mock deployment logic

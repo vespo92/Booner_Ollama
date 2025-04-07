@@ -9,7 +9,7 @@ class Config:
     
     # Ollama settings
     OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-    OLLAMA_LLM_MODEL = os.getenv("OLLAMA_LLM_MODEL", "llama3.2")
+    OLLAMA_LLM_MODEL = os.getenv("OLLAMA_LLM_MODEL", "mixtral")
     OLLAMA_EMBED_MODEL = os.getenv("OLLAMA_EMBED_MODEL", "mxbai-embed-large")
     
     # Vector store settings
