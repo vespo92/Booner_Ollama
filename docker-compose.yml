@@ -8,6 +8,8 @@ services:
       - "11434:11434"
     volumes:
       - ollama-data:/root/.ollama
+    environment:
+      - OLLAMA_ORIGINS=http://10.0.0.4:3000,http://localhost:3000
     restart: unless-stopped
     deploy:
       resources:
