@@ -40,24 +40,24 @@ class GameServerAgent:
         """
         
         class DeployMinecraftTool(BaseTool):
-            name = "deploy_minecraft"
-            description = "Deploy a Minecraft server"
+            name: str = "deploy_minecraft"
+            description: str = "Deploy a Minecraft server"
             
             def _run(self, config: GameServerConfig):
                 # In a real implementation, this would deploy a Minecraft server
                 return f"Deployed Minecraft server '{config.server_name}' on port {config.port}"
         
         class DeployCS2Tool(BaseTool):
-            name = "deploy_cs2"
-            description = "Deploy a Counter-Strike 2 server"
+            name: str = "deploy_cs2"
+            description: str = "Deploy a Counter-Strike 2 server"
             
             def _run(self, config: GameServerConfig):
                 # In a real implementation, this would deploy a CS2 server
                 return f"Deployed CS2 server '{config.server_name}' on port {config.port}"
         
         class DeployValheimTool(BaseTool):
-            name = "deploy_valheim"
-            description = "Deploy a Valheim server"
+            name: str = "deploy_valheim"
+            description: str = "Deploy a Valheim server"
             
             def _run(self, config: GameServerConfig):
                 # In a real implementation, this would deploy a Valheim server
