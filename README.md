@@ -34,16 +34,54 @@ This system is designed to run across multiple machines:
 
 ### Installation
 
+#### Option 1: Using Docker Compose (Recommended)
+
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/Booner_Ollama.git
+   git clone https://github.com/vespo92/Booner_Ollama.git
+   cd Booner_Ollama
+   ```
+
+2. Copy the example environment file and edit it with your settings:
+   ```
+   cp .env.example .env
+   ```
+
+3. Update the `.env` file with your specific configuration:
+   - Configure OPNSense API settings
+   - Set the Model Context Protocol URL and credentials
+   - Set any other desired configuration parameters
+
+4. Start the services with Docker Compose:
+   ```
+   docker-compose up -d
+   ```
+
+   This will start both the Ollama LLM service and the Booner API server in containers. The API server will be available at http://localhost:8000.
+
+5. To view logs:
+   ```
+   docker-compose logs -f
+   ```
+
+6. To stop the services:
+   ```
+   docker-compose down
+   ```
+
+#### Option 2: Using Virtual Environment
+
+1. Clone this repository:
+   ```
+   git clone https://github.com/vespo92/Booner_Ollama.git
    cd Booner_Ollama
    ```
 
 2. Create a virtual environment:
    ```
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Linux/macOS
+   venv\Scripts\activate    # On Windows
    ```
 
 3. Install dependencies:
@@ -73,12 +111,48 @@ python app.py --interactive
 
 This will start a command-line interface where you can enter natural language requests for infrastructure operations.
 
-#### API Mode (Coming Soon)
+#### API Mode (Using Virtual Environment)
 
-In the future, you'll be able to run the system as an API server:
+If you're using the virtual environment setup, run the system as an API server for integration with MCP:
+
+```
+python app.py --api
+```
+
+Or simply run it without any arguments (API mode is the default):
 
 ```
 python app.py
+```
+
+The API server will be available at http://localhost:8000.
+
+#### API Mode (Using Docker Compose)
+
+If you're using Docker Compose, the API server is automatically started in API mode:
+
+```
+docker-compose up -d
+```
+
+To view logs:
+
+```
+docker-compose logs -f booner-api
+```
+
+#### Testing the API
+
+To test the API connectivity with the MCP server (using virtual environment):
+
+```
+python test_api.py
+```
+
+With Docker Compose:
+
+```
+docker-compose exec booner-api python test_api.py
 ```
 
 ## Project Structure

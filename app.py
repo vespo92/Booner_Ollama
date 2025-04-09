@@ -90,6 +90,7 @@ def main():
     
     parser = argparse.ArgumentParser(description="Booner_Ollama - Local AI for Infrastructure as a Service")
     parser.add_argument("--interactive", action="store_true", help="Run in interactive mode")
+    parser.add_argument("--api", action="store_true", help="Run in API server mode")
     args = parser.parse_args()
     
     logger.info("Starting Booner_Ollama")
@@ -97,10 +98,20 @@ def main():
     
     if args.interactive:
         run_interactive_mode(components)
+    elif args.api:
+        # Start the API server
+        import subprocess
+        import sys
+        logger.info("Starting in API server mode")
+        # Run the API server in a new process
+        subprocess.run([sys.executable, "api_server.py"])
     else:
-        # Default behavior could be to start a web server or API
-        print("Starting in server mode... (not implemented yet)")
-        # This would be where you'd start FastAPI or another server
+        # Default behavior is to start the API server
+        print("Starting in API server mode...")
+        import subprocess
+        import sys
+        # Run the API server in a new process
+        subprocess.run([sys.executable, "api_server.py"])
 
 if __name__ == "__main__":
     main()
