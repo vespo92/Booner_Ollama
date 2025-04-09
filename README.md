@@ -52,12 +52,29 @@ This system is designed to run across multiple machines:
    - Set the Model Context Protocol URL and credentials
    - Set any other desired configuration parameters
 
-4. Start the services with Docker Compose:
+4. Start the services using the provided scripts:
+
+   For Linux/macOS:
+   ```
+   chmod +x run.sh
+   ./run.sh
+   ```
+
+   For Windows:
+   ```
+   powershell -ExecutionPolicy Bypass -File .\run.ps1
+   ```
+
+   These scripts will automatically detect if GPU support is available and start the appropriate configuration. The API server will be available at http://localhost:8000.
+   
+   Alternatively, you can manually start the services:
+   
+   With GPU support (requires NVIDIA Container Toolkit):
    ```
    docker-compose up -d
    ```
-
-   This will start both the Ollama LLM service and the Booner API server in containers. The API server will be available at http://localhost:8000.
+   
+   For more information on setting up GPU support, see the [GPU Setup Instructions](GPU_SETUP.md).
 
 5. To view logs:
    ```

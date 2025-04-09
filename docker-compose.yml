@@ -41,6 +41,7 @@ services:
       - MCP_API_KEY=${MCP_API_KEY}
       - DEBUG=${DEBUG:-True}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - DOCKER_ENV=true
     depends_on:
       - ollama
     restart: unless-stopped
